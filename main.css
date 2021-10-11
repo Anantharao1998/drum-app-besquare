@@ -1,0 +1,170 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+nav {
+  background-color: black;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  padding: 0 10px;
+}
+
+.menu {
+  margin-left: auto;
+}
+
+.app-logo {
+  font-size: 2rem;
+}
+
+.menu > button {
+  background-color: cadetblue;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  color: white;
+  font-size: 1rem;
+}
+
+.main-content {
+  background-color: rgb(247, 247, 247);
+  height: 100vh;
+}
+
+.data-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 4rem 0;
+  font-size: 50px;
+}
+
+.score-box {
+  margin: 0 2rem;
+  background-color: black;
+  width: 20rem;
+  height: 6rem;
+  border-radius: 0.6rem;
+  color: white;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 2rem;
+
+  overflow: hidden;
+  box-shadow: 0 0 1rem rgb(185, 185, 185);
+}
+.score-box > #score {
+  background-color: #bb346c;
+  width: 50%;
+  height: 100%;
+  background-color: #bb346c;
+  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  margin-left: auto;
+}
+
+#timer {
+  margin: 0 2rem;
+  background-color: black;
+  width: 20rem;
+  height: 6rem;
+  border-radius: 0.6rem;
+  color: white;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 1rem rgb(185, 185, 185);
+}
+
+.target-box {
+  box-shadow: 0 0 1rem rgb(185, 185, 185);
+  padding: 2rem 10rem;
+  border-radius: 0.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: auto;
+}
+
+.target-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 0 0 0.8rem rgb(185, 185, 185);
+  font-size: 4rem;
+  display: inline-flex;
+  height: 10rem;
+  width: 8rem;
+
+  margin: 0 1.5rem;
+  border-radius: 0.6rem;
+}
+
+.target-card.active {
+  /*border-color: rgb(127, 229, 255); */
+  border-color: #bb346c;
+  box-shadow: 0 0 2rem #bb346c;
+  height: 12rem;
+  width: 10rem;
+}
+
+.target-card.correct {
+  box-shadow: 0 1px 10px 1px #169716;
+}
+
+.target-card.wrong {
+  box-shadow: 0 1px 10px 1px #ff5959;
+}
+
+.target-card.timeout {
+  box-shadow: 0 1px 10px 1px #ffae00;
+}
+
+.key-box {
+  margin: 2rem;
+  padding: 2rem;
+  border-radius: 0.6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.key-card {
+  background-color: black;
+  margin: 0 1rem;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  box-shadow: 0 0 1rem rgb(185, 185, 185);
+}
+
+.key-card > .header {
+  background-color: #bb346c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 3rem;
+  font-size: 2.5rem;
+  color: white;
+}
+
+.key-card > .content {
+  background-color: black;
+  color: white;
+  padding: 1rem 0;
+  font-size: 1.2rem;
+  text-align: center;
+}

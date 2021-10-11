@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <div class="app-logo">Drum App</div>
+      <div class="menu">
+        <button id="start">Start Game</button>
+        <button>Free Play</button>
+      </div>
+    </nav>
+    <div class="main-content">
+      <div class="data-display">
+        <div class="score-box">
+          Score
+          <div id="score">0</div>
+        </div>
+        <div id="timer" class="timer-box">00:00</div>
+      </div>
+      <div class="target-box">
+        <div class="target-card">A</div>
+        <div class="target-card">G</div>
+        <div class="target-card">A</div>
+        <div class="target-card active">G</div>
+        <div class="target-card"></div>
+        <div class="target-card"></div>
+        <div class="target-card"></div>
+      </div>
+      <div class="key-box" id="key-box">
+        <div id="clap" class="key-card">
+          <div class="header">A</div>
+          <div class="content">Clap</div>
+        </div>
+        <div id="hi_hat" class="key-card">
+          <div class="header">S</div>
+          <div class="content">Hi Hat</div>
+        </div>
+        <div id="kick" class="key-card">
+          <div class="header">D</div>
+          <div class="content">Kick</div>
+        </div>
+        <div id="open_hat" class="key-card">
+          <div class="header">F</div>
+          <div class="content">Open Hat</div>
+        </div>
+        <div id="boom" class="key-card">
+          <div class="header">G</div>
+          <div class="content">Boom</div>
+        </div>
+        <div id="ride" class="key-card">
+          <div class="header">H</div>
+          <div class="content">Ride</div>
+        </div>
+        <div id="snare" class="key-card">
+          <div class="header">J</div>
+          <div class="content">Snare</div>
+        </div>
+        <div id="tom" class="key-card">
+          <div class="header">K</div>
+          <div class="content">Tom</div>
+        </div>
+        <div id="tink" class="key-card">
+          <div class="header">L</div>
+          <div class="content">Tink</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
