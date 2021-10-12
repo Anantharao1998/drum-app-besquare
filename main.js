@@ -116,10 +116,8 @@ let interval_id;
 // events when start game is clicked
 // shuffles and inserts sequence of keys
 document.getElementById("start").addEventListener("click", () => {
-  console.log("Game Started!!!");
-  console.log(interval_id);
+  changeButton();
   clearInterval(interval_id);
-  console.log(interval_id);
   startTime(360);
 
   shuffle(soundKeys);
@@ -182,6 +180,7 @@ const arrangeTargetContent = (event) => {
 //timer
 function startTime(duration) {
   let current_time = 30;
+
   interval_id = setInterval(() => {
     current_time--;
     const timer_id = document.getElementById("timer");
@@ -189,6 +188,10 @@ function startTime(duration) {
     if (current_time === 0) {
       clearInterval(interval_id);
       document.removeEventListener("keypress", arrangeTargetContent);
+      alert("Game Has Ended !!!");
+
+      const changeButton = document.getElementById("start");
+      changeButton.innerHTML = "Start Game";
     }
   }, 1000);
 }
@@ -197,4 +200,9 @@ function formatTime(time) {
   minutes = ("0" + Math.floor(time / 60)).substr(-2);
   seconds = ("0" + Math.floor(time % 60)).substr(-2);
   return `${minutes}:${seconds}`;
+}
+
+function changeButton() {
+  const changeButton = document.getElementById("start");
+  changeButton.innerHTML = "End Game";
 }
