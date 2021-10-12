@@ -109,24 +109,31 @@ const shuffle = (array) => {
 };
 
 let targetCards = document.querySelectorAll(".target-card");
+let targetParent = document.querySelector(".target-box");
 let soundKeyIndex = 0;
+let interval_id;
 
 // events when start game is clicked
 // shuffles and inserts sequence of keys
 document.getElementById("start").addEventListener("click", () => {
   console.log("Game Started!!!");
+  console.log(interval_id);
+  clearInterval(interval_id);
+  console.log(interval_id);
   startTime(360);
 
   shuffle(soundKeys);
   soundKeyIndex = 0;
   for (let i = 3; i > -1; i--) {
-    targetCards[i].textContent = soundKeys[soundKeyIndex].toUpperCase();
-
+    targetParent.children[i].textContent =
+      soundKeys[soundKeyIndex].toUpperCase();
     soundKeyIndex += 1;
   }
 
   for (let i = 6; i > 3; i--) {
-    targetCards[i].textContent = "";
+    targetParent.children[i].classList.remove("correct");
+    targetParent.children[i].classList.remove("wrong");
+    targetParent.children[i].textContent = "";
   }
 
   // initialize score
@@ -139,55 +146,51 @@ document.getElementById("start").addEventListener("click", () => {
 let score_id = document.getElementById("score");
 let score = 0;
 
+function rotateRight(arr) {
+  let last = arr.pop();
+  arr.unshift(last);
+  return arr;
+}
+
 // change the arrangment of the target-card
 // determine if key input is the same with the active target-card value
 const arrangeTargetContent = (event) => {
-  console.log(event.key.toUpperCase());
-  console.log(targetCards[3].textContent);
-  if (event.key.toUpperCase() === targetCards[3].textContent) {
-    targetCards[4].classList.add("correct");
-    targetCards[4].classList.remove("wrong");
+  if (event.key.toUpperCase() === targetParent.children[3].textContent) {
+    targetParent.children[3].classList.add("correct");
 
     score = score + 1;
     score_id.textContent = score;
   } else {
-    targetCards[4].classList.add("wrong");
-    targetCards[4].classList.remove("correct");
+    targetParent.children[3].classList.add("wrong");
   }
-
-  for (let i = 6; i > -1; i--) {
-    if (i === 0) {
-      // if it reaches the first target-card element, assign a value from the sequence of keys
-      soundKeyIndex++;
-      if (soundKeyIndex < soundKeys.length) {
-        console.log("index: " + soundKeyIndex + " length: " + soundKeys.length);
-        targetCards[i].textContent = soundKeys[soundKeyIndex].toUpperCase();
-      } else {
-        targetCards[i].textContent = "";
-      }
-    } else if (targetCards[i - 1]) {
-      // assign the current target-card value with the previous target'card's value
-      targetCards[i].textContent = targetCards[i - 1].textContent;
-    } else {
-      // maybe no function lol
-      targetCards.textContent = "";
+  targetParent.children[3].classList.remove("active");
+  temp = Array.from(targetParent.children);
+  rotateRight(temp).forEach((value, index) => {
+    if (index < 3) {
+      value.classList.remove(...value.classList);
+      value.classList.add("target-card");
+      value.textContent =
+        shuffle(soundKeys)[
+          Math.floor(Math.random() * soundKeys.length)
+        ].toUpperCase();
     }
-  }
+    targetParent.appendChild(value);
+  });
+  targetParent.children[3].classList.add("active");
 };
 
 //timer
 function startTime(duration) {
-  let current_time = 60;
-  const interval_id = setInterval(() => {
+  let current_time = 30;
+  interval_id = setInterval(() => {
     current_time--;
     const timer_id = document.getElementById("timer");
     timer_id.textContent = formatTime(current_time);
     if (current_time === 0) {
-      console.log("Game Ends !!!");
       clearInterval(interval_id);
       document.removeEventListener("keypress", arrangeTargetContent);
     }
-  }, 100);
+  }, 1000);
 }
 
 function formatTime(time) {
